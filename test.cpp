@@ -1,8 +1,8 @@
 #include <iostream>
 
 // Broken formatting test
-int main    (void)
+int main(void)
 {
-std::  cout<<"Hello, world!\n";
-   return   0;
+    std::cout << "Hello, world!\n";
+    return 0;
 }
