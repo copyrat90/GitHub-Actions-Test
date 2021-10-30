@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#define BIT_MASK 0xDEADBEAF
+#define BIT_MASK 0xDEADBEAD
 
 #define MULTILINE_DEF(a,b) if ((a)>2) { \
 auto temp = (b)/2; \
