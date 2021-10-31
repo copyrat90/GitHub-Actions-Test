@@ -21,9 +21,10 @@ jobs:
           inplace: True
       - run: sudo eclint fix
 
-      - run: TMPDIFF=$(mktemp)
-      - run: git diff > "${TMPDIFF}"
-      - run: git stash -u && git stash drop
       - env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: reviewdog -f=diff -reporter=github-pr-review < "${TMPDIFF}"
+        run: |
+          TMPDIFF=$(mktemp)
+          git diff > "${TMPDIFF}"
+          git stash -u && git stash drop
+          reviewdog -f=diff -reporter=github-pr-review < "${TMPDIFF}"
