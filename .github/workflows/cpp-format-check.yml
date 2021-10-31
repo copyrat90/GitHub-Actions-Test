@@ -18,11 +18,12 @@ jobs:
           extensions: c,cpp,cc,cxx,h,hpp,hh,hxx,tpp,inl
           clangFormatVersion: 13
 
-  editor_config_check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: sudo npm install -g eclint
-      - name: EditorConfig check
-        run: sudo eclint check
+  # REMOVED DUE TO INVALID SPACE ISSUES
+  # editor_config_check:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #     - run: sudo npm install -g eclint
+  #     - name: EditorConfig check
+  #       run: sudo eclint check

@@ -18,16 +18,17 @@ jobs:
           clangFormatVersion: 13
           inplace: True
 
-      - uses: actions/setup-node@v2
-      - run: sudo npm install -g eclint
-      - name: EditorConfig fix
-        run: sudo eclint fix
+      # REMOVED DUE TO INVALID SPACE ISSUES
+      # - uses: actions/setup-node@v2
+      # - run: sudo npm install -g eclint
+      # - name: EditorConfig fix
+      #   run: sudo eclint fix
 
       - name: Bot commit
         uses: EndBug/add-and-commit@v4
         with:
           author_name: Format Robot
           author_email: robot@example.com
-          message: 'Committing format changes'
+          message: "Committing format changes"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
