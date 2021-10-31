@@ -27,4 +27,4 @@ jobs:
           TMPDIFF=$(mktemp)
           git diff > "${TMPDIFF}"
           git stash -u && git stash drop
-          reviewdog -f=diff -reporter=github-pr-review < "${TMPDIFF}"
+          reviewdog -f=diff -reporter=github-pr-check < "${TMPDIFF}"
