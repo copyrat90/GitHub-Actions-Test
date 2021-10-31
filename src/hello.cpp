@@ -4,6 +4,7 @@
 #include <iterator>
 #include <cstdlib>
 #include <ctime>
+#include "hello.hpp"
 
 #define BIT_MASK 0xDEADBEAF
 
