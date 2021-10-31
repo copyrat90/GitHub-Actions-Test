@@ -20,10 +20,10 @@ namespace LevelOneNamespace
 namespace LevelTwoNamespace
 {
 
-template <typename T, int size>
-bool is_sorted(T (&array)[size])
-{
-    return std::adjacent_find(array, array + size, std::greater<T>()) == array + size;
+template <typename T, int size> bool is_sorted(T(&array)[size]) {
+  return std::adjacent_find(array, array + size, std::greater<T>()) ==
+         array + size;
+
 }
 
 std::vector<uint32_t> returnVector(uint32_t* LongNameForParameter1, double* LongNameForParameter2,
