@@ -19,7 +19,7 @@ jobs:
           extensions: c,cc,cpp,cxx,h,hh,hpp,hxx,tpp,inl
           clangFormatVersion: 13
           inplace: True
-      - run: eclint fix
+      - run: sudo eclint fix
 
       - run: TMPDIFF=$(mktemp)
       - run: git diff > "${TMPDIFF}"
