@@ -18,10 +18,10 @@ jobs:
           clangFormatVersion: 13
           inplace: True
 
+      - uses: actions/setup-node@v2
+      - run: sudo npm install -g eclint
       - name: EditorConfig fix
-        uses: snow-actions/eclint@v1.0.1
-        with:
-          args: 'fix'
+        run: sudo eclint fix
 
       - name: Bot commit
         uses: EndBug/add-and-commit@v4
