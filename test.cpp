@@ -66,7 +66,7 @@ int main()
         std::random_shuffle(list, list + 9);
     } while (is_sorted(list));
 
-    int score = 0;
+    int score = 0; int asdf;
 
     do
     {
