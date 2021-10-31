@@ -6,6 +6,7 @@
 #include <ctime>
 #include "hello.hpp"
 
+
 #define BIT_MASK 0xDEADBEAF
 
 #define MULTILINE_DEF(a,b) if ((a)>2) { \
