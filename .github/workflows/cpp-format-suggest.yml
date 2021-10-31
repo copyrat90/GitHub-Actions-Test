@@ -1,0 +1,30 @@
+# Apply Clang-Format and EditorConfig sequentially, and suggest them
+
+name: cpp-format-suggest
+on:
+  [pull_request, workflow_dispatch]
+
+jobs:
+  format_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: sudo npm install -g eclint
+      - uses: reviewdog/action-setup@v1.0.3
+
+      - uses: DoozyX/clang-format-lint-action@v0.13
+        with:
+          exclude: build out
+          extensions: c,cc,cpp,cxx,h,hh,hpp,hxx,tpp,inl
+          clangFormatVersion: 13
+          inplace: True
+      - run: sudo eclint fix
+
+      - env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TMPDIFF=$(mktemp)
+          git diff > "${TMPDIFF}"
+          git stash -u && git stash drop
+          reviewdog -f=diff -reporter=github-pr-review < "${TMPDIFF}"

@@ -1,0 +1,33 @@
+# Run clang-format and EditorConfig fix sequentially, and commit them
+
+name: cpp-format-fix
+
+on: [workflow_dispatch]
+
+jobs:
+  clang_format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: clang-format fix
+        uses: DoozyX/clang-format-lint-action@v0.13
+        with:
+          exclude: build out
+          extensions: c,cpp,cc,cxx,h,hpp,hh,hxx,tpp,inl
+          clangFormatVersion: 13
+          inplace: True
+
+      - name: EditorConfig fix
+        uses: snow-actions/eclint@v1.0.1
+        with:
+          args: 'fix'
+
+      - name: Bot commit
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: Format Robot
+          author_email: robot@example.com
+          message: 'Committing format changes'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
